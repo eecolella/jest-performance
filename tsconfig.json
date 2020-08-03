@@ -1,0 +1,15 @@
+{
+  "compilerOptions" : {
+    "esModuleInterop" : true,
+    "jsx" : "react",
+    "include" : [
+      "**/src/**/*.ts"
+    ]
+  },
+  "parserOptions" : {
+    "createDefaultProgram" : true
+  },
+    "include": [
+    "./**/*.{js,ts}"
+  ]
+}
