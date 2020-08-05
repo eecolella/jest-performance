@@ -1,7 +1,8 @@
 import R from 'ramda'
-import sg from 'simple-git'
 import { addRunSlowerRatio } from './utils'
 import { Bench, Test, RawTest } from './constants'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const git = require('simple-git/promise')()
 
 /**
  *
@@ -13,8 +14,8 @@ import { Bench, Test, RawTest } from './constants'
  */
 const getBench = async (rawTests: RawTest[]): Promise<Bench> => {
   const date = new Date().toUTCString()
-  const gitStatus = await sg().status()
-  const gitLog = await sg().log()
+  const gitStatus = await git.status()
+  const gitLog = await git.log()
 
   const branch = `${gitStatus.current} -> ${gitStatus.tracking}`
   const commit = `${gitLog.latest.hash}`
