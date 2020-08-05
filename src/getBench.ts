@@ -20,7 +20,6 @@ const getBench = async (rawTests: RawTest[]): Promise<Bench> => {
   const commit = `${gitLog.latest.hash}`
   const changes = gitStatus.files.length
 
-  // @ts-ignore
   return {
     date,
     git: {
@@ -40,7 +39,6 @@ const getBench = async (rawTests: RawTest[]): Promise<Bench> => {
           runSlowerRatio: 0,
         }),
       ),
-      // @ts-ignore
       R.filter(R.prop('stats')),
       R.values,
     )(rawTests),
