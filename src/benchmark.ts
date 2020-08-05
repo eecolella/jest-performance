@@ -1,3 +1,4 @@
+import R from 'ramda'
 import Benchmark from 'benchmark'
 import path from 'path'
 import { Racer } from './constants'
@@ -15,7 +16,7 @@ import saveHistory from './saveHistory'
  */
 const benchmark = async function (
   discarded: undefined,
-  racers: Racer[],
+  racersObj: Record<string, Racer>,
 ): Promise<{
   message: () => string
   pass: boolean
@@ -23,11 +24,12 @@ const benchmark = async function (
   const suiteName = this.currentTestName
   const testPath = this.testPath
   const testName = path.basename(testPath)
+  const racersPairs = R.toPairs(racersObj)
 
   await new Promise((resolve) => {
     const suite = new Benchmark.Suite(suiteName)
 
-    racers
+    racersPairs
       .reduce((acc, [name, fun]) => {
         acc.add(name, fun)
         return acc

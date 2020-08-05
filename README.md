@@ -19,27 +19,18 @@ for (let i = 0; i < 10; i++) {
   array.push(array.length);
 }
 
-it('reduce vs for', async () => {
-  await expect().benchmark(
-    [
-      [
-        'reduce',
-        () => {
-          const sum = array.reduce((acc, x) => acc + x, 0);
-        },
-      ],
-      [
-        'array',
-        () => {
-          let sum = 0;
-          for (let i = 0, arrayLength = array.length; i < arrayLength; i++) {
-            sum += array[i];
-          }
-        },
-      ],
-    ],
-    {},
-  );
+it('reduce v3 vs for v2', async () => {
+  await expect().benchmark({
+    'reduce v3': () => {
+      const sum = array.reduce((acc, x) => acc + x, 0);
+    },
+    'for v4': () => {
+      let sum = 0;
+      for (let i = 0, arrayLength = array.length; i < arrayLength; i++) {
+        sum += array[i];
+      }
+    },
+  });
 });
 ```
 
@@ -52,14 +43,14 @@ will print:
 Add `jest-performance` to your Jest `setupFilesAfterEnv` configuration
 ```
 "jest": {
-  "setupFilesAfterEnv": ["jest-extended"]
+  "setupFilesAfterEnv": ["jest-performance"]
 }
 ```
 
 #### Jest <v23
 ```
 "jest": {
-  "setupTestFrameworkScriptFile": "jest-extended"
+  "setupTestFrameworkScriptFile": "jest-performance"
 }
 ```
 
@@ -69,8 +60,7 @@ For example:
 
 ```js
 // ./testSetup.js
-require('jest-extended');
-require('jest-chain');
+require('jest-performance');
 require('any other test framework libraries you are using');
 ```
 
