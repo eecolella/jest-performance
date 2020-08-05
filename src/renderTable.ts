@@ -26,6 +26,7 @@ const table = new Table({
 const renderTable = (benches: Bench[], suiteName: string): void => {
   R.forEach((bench: Bench) => {
     const avgErrorPc =
+      // @ts-ignore
       R.compose(R.sum, R.pluck('errorPc'))(bench.tests) / bench.tests.length
     R.forEach((test: Test): void => {
       table.push([

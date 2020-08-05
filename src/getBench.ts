@@ -40,8 +40,10 @@ const getBench = async (rawTests: RawTest[]): Promise<Bench> => {
           runSlowerRatio: 0,
         }),
       ),
+      // @ts-ignore
       R.filter(R.prop('stats')),
       R.values,
+      // @ts-ignore
     )(rawTests),
   }
 }

@@ -21,7 +21,9 @@ const benchmark = async function (
   message: () => string
   pass: boolean
 }> {
+  // @ts-ignore
   const suiteName = this.currentTestName
+  // @ts-ignore
   const testPath = this.testPath
   const testName = path.basename(testPath)
   const racersPairs = R.toPairs(racersObj)
@@ -31,10 +33,12 @@ const benchmark = async function (
 
     racersPairs
       .reduce((acc, [name, fun]) => {
+        // @ts-ignore
         acc.add(name, fun)
         return acc
       }, suite)
       .on('complete', async function onComplete() {
+        // @ts-ignore
         const bench = await getBench(this)
         renderTable([bench], suiteName)
         await saveHistory(testPath, testName, bench)
