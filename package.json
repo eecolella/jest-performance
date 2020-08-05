@@ -1,6 +1,6 @@
 {
   "name": "jest-performance",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Benchmark JS integration for Jest",
   "keywords": [
     "js",
