@@ -1,5 +1,5 @@
 import R from 'ramda'
-import sg from 'simple-git/promise'
+import sg from 'simple-git'
 import { addRunSlowerRatio } from './utils'
 import { Bench, Test, RawTest } from './constants'
 
